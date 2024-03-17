@@ -4,10 +4,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">register-user-face</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div>
+    <div>
+      <!-- Place for camera and canvas-->
+    </div>
+    <div>
+      <ion-button expand="block" size="large">Register Face</ion-button>
+    </div>
+    <div>
+      <!--Show successfull registration message and then redirect message -->
+      <!--Hide the button. This is for debug purpose only-->
+      <ion-button expand="block" id="debugBtn" [routerLink]="['/registration-successful']">Go to Next</ion-button>
+    </div>
+  </div>
 </ion-content>

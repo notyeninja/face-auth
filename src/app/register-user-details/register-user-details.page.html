@@ -4,10 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">register-user-details</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div>
+    <ion-input label="Enter Name" placeholder="Enter name" type="text" fill="outline"
+      label-placement="floating"></ion-input>
+    <ion-button expand="block" [routerLink]="['/register-user-face']">Next</ion-button>
+  </div>
 </ion-content>
