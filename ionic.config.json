@@ -1,0 +1,7 @@
+{
+  "name": "face-auth-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
