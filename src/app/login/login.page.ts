@@ -27,11 +27,14 @@ export class LoginPage {
 
   ionViewWillEnter() {
     this.authService.faceAuthenticationStatus$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        takeUntil(this.destroy$),
+        filter(status => status !== '')
+      )
       .subscribe(status => {
         if (status.includes('Authorized')) {
           this.redirectToSuccess();
-        } else {
+        } else if (status.includes('Not Authorized')) {
           this.redirectToUnauthorized();
         }
       });
