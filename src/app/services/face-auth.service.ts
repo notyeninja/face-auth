@@ -27,17 +27,20 @@ export class FaceAuthService {
     this.userName = userName;
   }
 
-  registerFace(video: HTMLVideoElement) {
+  registerFace(video: HTMLVideoElement | null) {
     this.resetFaceDetectionLoop();
     this.faceRegistrationBS.next('Started face registration...');
     // start detecting face at an interval
     // stop when high quality face is detected.
     this.faceDetectionInterval$.subscribe(async () => {
-      const detectedFace = await this.detectFace(video);
-      if (detectedFace) {
-        this.registerFaceDescriptor.push(detectedFace.descriptor);
-        this.stopFaceDetectionLoop();
-        this.faceRegistrationBS.next('Successfully registered face. Redirecting user...');
+      if (video) {
+        const detectedFace = await this.detectFace(video);
+        if (detectedFace) {
+          this.registerFaceDescriptor.push(detectedFace.descriptor);
+          this.stopFaceDetectionLoop();
+          video = null;
+          this.faceRegistrationBS.next('Successfully registered face. Redirecting user...');
+        }
       }
     });
   }
@@ -91,7 +94,7 @@ export class FaceAuthService {
 
     this.faceDetectionConfidenceLevel = faceDetected.detection.score * 100;
     this.faceRegistrationBS.next(`Confidence Level: ${this.faceDetectionConfidenceLevel}`)
-    if (this.faceDetectionConfidenceLevel > 95) {
+    if (this.faceDetectionConfidenceLevel > this.REQUIRED_CONFIDENCE_LEVEL) {
       return faceDetected;
     }
 
@@ -103,11 +106,16 @@ export class FaceAuthService {
   }
 
   private stopFaceDetectionLoop() {
+    console.log(`Stopping face detection`);
     this.stopFaceDetection$.next(true);
     this.stopFaceDetection$.complete();
+    console.log(`State of face detection replay subject: ${this.stopFaceDetection$.closed}`);
   }
 
   private resetFaceDetectionLoop() {
-    this.stopFaceDetection$ = new ReplaySubject<boolean>(1);
+    console.log(`Resetting face detection ${this.stopFaceDetection$.closed}`);
+    if (this.stopFaceDetection$.closed) {
+      this.stopFaceDetection$ = new ReplaySubject<boolean>(1);
+    }
   }
 }

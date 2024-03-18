@@ -1,22 +1,35 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { CameraAction, CameraActionType, CameraState, CameraStateType } from '../models/camera.models';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CameraService {
 
-  private cameraBS = new BehaviorSubject<boolean>(false);
-  cameraState$ = this.cameraBS.asObservable();
+  private cameraActionBS = new BehaviorSubject<CameraActionType>(CameraAction.INIT);
+  cameraAction$ = this.cameraActionBS.asObservable();
+
+  private cameraReadyBS = new BehaviorSubject<CameraStateType>(CameraState.UNKNOWN);
+  cameraReady$ = this.cameraReadyBS.asObservable();
 
   videoStreamBS = new BehaviorSubject<HTMLVideoElement | null>(null);
   constructor() { }
 
   startCamera() {
-    this.cameraBS.next(true);
+    this.cameraActionBS.next(CameraAction.START);
   }
 
   stopCamera() {
-    this.cameraBS.next(false);
+    this.cameraActionBS.next(CameraAction.STOP);
+  }
+
+  cameraState(ready: CameraStateType) {
+    this.cameraReadyBS.next(ready);
+    // when camera is stopped then video feed is destroyed.
+    if (!ready) {
+      this.cameraActionBS.next(CameraAction.INIT);
+    }
   }
 }

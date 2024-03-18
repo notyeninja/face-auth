@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CameraService } from '../services/camera.service';
 import { FaceAuthService } from '../services/face-auth.service';
-import { ReplaySubject, filter, takeUntil } from 'rxjs';
+import { ReplaySubject, filter, takeUntil, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RegisterUserFacePage {
 
   messages: Array<string> = [];
+  cameraReady$ = this.cameraService.cameraReady$.pipe(tap(v => console.log(`Camera ready state: ${v}`)));
 
   private destroy$ = new ReplaySubject<boolean>(1);
   private startedCamera$ = this.cameraService.videoStreamBS
@@ -39,6 +40,7 @@ export class RegisterUserFacePage {
       .subscribe(status => {
         this.messages.push(status);
         if (status.includes('Successfully')) {
+          this.cameraService.stopCamera();
           this.redirectToSuccessfulRegistration();
         }
       });

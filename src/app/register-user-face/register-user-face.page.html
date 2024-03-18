@@ -16,7 +16,8 @@
       <app-camera></app-camera>
     </div>
     <div>
-      <ion-button expand="block" size="large" (click)="startRegistration()">Register Face</ion-button>
+      <ion-button expand="block" size="large" *ngIf="cameraReady$ | async" (click)="startRegistration()">Register
+        Face</ion-button>
     </div>
     <div>
       <span *ngFor="let message of messages">{{message}}</span>
