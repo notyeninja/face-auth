@@ -13,9 +13,10 @@
   <div>
     <div>
       <!-- Place for camera and canvas-->
+      <app-camera></app-camera>
     </div>
     <div>
-      <ion-button expand="block" size="large">Register Face</ion-button>
+      <ion-button expand="block" size="large" (click)="startRegistration()">Register Face</ion-button>
     </div>
     <div>
       <!--Show successfull registration message and then redirect message -->

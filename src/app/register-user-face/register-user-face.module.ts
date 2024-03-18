@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterUserFacePageRoutingModule } from './register-user-face-routing.module';
 
 import { RegisterUserFacePage } from './register-user-face.page';
+import { CameraModule } from '../camera/camera.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegisterUserFacePageRoutingModule
+    RegisterUserFacePageRoutingModule,
+    CameraModule
   ],
   declarations: [RegisterUserFacePage]
 })
-export class RegisterUserFacePageModule {}
+export class RegisterUserFacePageModule { }
