@@ -9,6 +9,7 @@ export class CameraService {
   private cameraBS = new BehaviorSubject<boolean>(false);
   cameraState$ = this.cameraBS.asObservable();
 
+  videoStreamBS = new BehaviorSubject<HTMLVideoElement | null>(null);
   constructor() { }
 
   startCamera() {

@@ -19,6 +19,9 @@
       <ion-button expand="block" size="large" (click)="startRegistration()">Register Face</ion-button>
     </div>
     <div>
+      <span *ngFor="let message of messages">{{message}}</span>
+    </div>
+    <div>
       <!--Show successfull registration message and then redirect message -->
       <!--Hide the button. This is for debug purpose only-->
       <ion-button expand="block" id="debugBtn" [routerLink]="['/registration-successful']">Go to Next</ion-button>

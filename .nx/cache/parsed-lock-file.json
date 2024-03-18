@@ -3186,6 +3186,33 @@
         "hash": "sha512-15JO2TdaxGVKNdLZb/2TtDa+juj3XGD/V0y/disgdzYYSnajgSh06nwODfdHz9eTUh1Hisz+KIo857I1rCZrfg=="
       }
     },
+    "npm:@tensorflow/tfjs-core": {
+      "type": "npm",
+      "name": "npm:@tensorflow/tfjs-core",
+      "data": {
+        "version": "1.7.0",
+        "packageName": "@tensorflow/tfjs-core",
+        "hash": "sha512-uwQdiklNjqBnHPeseOdG0sGxrI3+d6lybaKu2+ou3ajVeKdPEwpWbgqA6iHjq1iylnOGkgkbbnQ6r2lwkiIIHw=="
+      }
+    },
+    "npm:@types/webgl2@0.0.4": {
+      "type": "npm",
+      "name": "npm:@types/webgl2@0.0.4",
+      "data": {
+        "version": "0.0.4",
+        "packageName": "@types/webgl2",
+        "hash": "sha512-PACt1xdErJbMUOUweSrbVM7gSIYm1vTncW2hF6Os/EeWi6TXYAYMPp+8v6rzHmypE5gHrxaxZNXgMkJVIdZpHw=="
+      }
+    },
+    "npm:@types/webgl2": {
+      "type": "npm",
+      "name": "npm:@types/webgl2",
+      "data": {
+        "version": "0.0.11",
+        "packageName": "@types/webgl2",
+        "hash": "sha512-LFa4je4lUbqDVRNeC2W1ZRM8dOgsGsm23MZO7m/EllCVg07yB65W3eUF4MAM+0LU9X6x/0NTrvXxAW0pmipNdw=="
+      }
+    },
     "npm:@tufjs/canonical-json": {
       "type": "npm",
       "name": "npm:@tufjs/canonical-json",
@@ -3384,6 +3411,15 @@
         "hash": "sha512-FQx220y22OKNTqaByeBGqHWYz4cl94tpcxeFdvBo3wjG6XPBuZ0BNgNZRV5J5TFmmcsJ4IzsLkmGRiQbnYsBEQ=="
       }
     },
+    "npm:@types/offscreencanvas": {
+      "type": "npm",
+      "name": "npm:@types/offscreencanvas",
+      "data": {
+        "version": "2019.3.0",
+        "packageName": "@types/offscreencanvas",
+        "hash": "sha512-esIJx9bQg+QYF0ra8GnvfianIY8qWB0GBx54PK5Eps6m+xTj86KLavHv6qDhzKcu5UUOgNfJ2pWaIIV7TRUd9Q=="
+      }
+    },
     "npm:@types/qs": {
       "type": "npm",
       "name": "npm:@types/qs",
@@ -3409,6 +3445,15 @@
         "version": "0.12.0",
         "packageName": "@types/retry",
         "hash": "sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA=="
+      }
+    },
+    "npm:@types/seedrandom": {
+      "type": "npm",
+      "name": "npm:@types/seedrandom",
+      "data": {
+        "version": "2.4.27",
+        "packageName": "@types/seedrandom",
+        "hash": "sha512-YvMLqFak/7rt//lPBtEHv3M4sRNA+HGxrhFZ+DQs9K2IkYJbNwVIb8avtJfhDiuaUBX/AW0jnjv48FV8h3u9bQ=="
       }
     },
     "npm:@types/semver": {
@@ -3463,6 +3508,15 @@
         "version": "0.3.36",
         "packageName": "@types/sockjs",
         "hash": "sha512-MK9V6NzAS1+Ud7JV9lJLFqW85VbC9dq3LmwZCuBe4wBDgKC0Kj/jd8Xl+nSviU+Qc3+m7umHHyHg//2KSa0a0Q=="
+      }
+    },
+    "npm:@types/webgl-ext": {
+      "type": "npm",
+      "name": "npm:@types/webgl-ext",
+      "data": {
+        "version": "0.0.30",
+        "packageName": "@types/webgl-ext",
+        "hash": "sha512-LKVgNmBxN0BbljJrVUwkxwRYqzsAEPcZOe6S2T6ZaBDIrFp0qu4FNlpc5sM1tGbXUYFgdVQIoeLk1Y1UoblyEg=="
       }
     },
     "npm:@types/ws": {
@@ -5796,6 +5850,15 @@
         "hash": "sha512-nZD7m9iCPC5g0pYmcaxogYKggSfLsdxl8of3Q/oIbqCqLLIO9IAF0GWjX1z9NZRHPiXv8Wex4yDCaZsgEw0Y8w=="
       }
     },
+    "npm:face-api.js": {
+      "type": "npm",
+      "name": "npm:face-api.js",
+      "data": {
+        "version": "0.22.2",
+        "packageName": "face-api.js",
+        "hash": "sha512-9Bbv/yaBRTKCXjiDqzryeKhYxmgSjJ7ukvOvEBy6krA0Ah/vNBlsf7iBNfJljWiPA8Tys1/MnB3lyP2Hfmsuyw=="
+      }
+    },
     "npm:fast-deep-equal": {
       "type": "npm",
       "name": "npm:fast-deep-equal",
@@ -7947,6 +8010,15 @@
         "hash": "sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A=="
       }
     },
+    "npm:node-fetch": {
+      "type": "npm",
+      "name": "npm:node-fetch",
+      "data": {
+        "version": "2.1.2",
+        "packageName": "node-fetch",
+        "hash": "sha512-IHLHYskTc2arMYsHZH82PVX8CSKT5lzb7AXeyO06QnjGDKtkv+pv3mEki6S7reB/x1QPo+YPxQRNEVgR5V/w3Q=="
+      }
+    },
     "npm:node-forge": {
       "type": "npm",
       "name": "npm:node-forge",
@@ -9142,6 +9214,15 @@
         "version": "3.3.0",
         "packageName": "schema-utils",
         "hash": "sha512-pN/yOAvcC+5rQ5nERGuwrjLlYvLTbCibnZ1I7B1LaiAz9BRBlE9GMgE/eqV30P7aJQUf7Ddimy/RsbYO/GrVGg=="
+      }
+    },
+    "npm:seedrandom": {
+      "type": "npm",
+      "name": "npm:seedrandom",
+      "data": {
+        "version": "2.4.3",
+        "packageName": "seedrandom",
+        "hash": "sha512-2CkZ9Wn2dS4mMUWQaXLsOAfGD+irMlLEeSP3cMxpGbgyOOzJGFa+MWCOMTOCMyZinHRPxyOj/S/C57li/1to6Q=="
       }
     },
     "npm:select-hose": {
@@ -14707,6 +14788,36 @@
       "type": "static"
     },
     {
+      "source": "npm:@tensorflow/tfjs-core",
+      "target": "npm:@types/offscreencanvas",
+      "type": "static"
+    },
+    {
+      "source": "npm:@tensorflow/tfjs-core",
+      "target": "npm:@types/seedrandom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@tensorflow/tfjs-core",
+      "target": "npm:@types/webgl-ext",
+      "type": "static"
+    },
+    {
+      "source": "npm:@tensorflow/tfjs-core",
+      "target": "npm:@types/webgl2@0.0.4",
+      "type": "static"
+    },
+    {
+      "source": "npm:@tensorflow/tfjs-core",
+      "target": "npm:node-fetch",
+      "type": "static"
+    },
+    {
+      "source": "npm:@tensorflow/tfjs-core",
+      "target": "npm:seedrandom",
+      "type": "static"
+    },
+    {
       "source": "npm:@tufjs/models",
       "target": "npm:@tufjs/canonical-json",
       "type": "static"
@@ -17834,6 +17945,16 @@
     {
       "source": "npm:tmp@0.0.33",
       "target": "npm:os-tmpdir",
+      "type": "static"
+    },
+    {
+      "source": "npm:face-api.js",
+      "target": "npm:@tensorflow/tfjs-core",
+      "type": "static"
+    },
+    {
+      "source": "npm:face-api.js",
+      "target": "npm:tslib@1.14.1",
       "type": "static"
     },
     {

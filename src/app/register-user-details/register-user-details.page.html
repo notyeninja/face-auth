@@ -11,8 +11,8 @@
     </ion-toolbar>
   </ion-header>
   <div>
-    <ion-input label="Enter Name" placeholder="Enter name" type="text" fill="outline"
+    <ion-input [(ngModel)]="userName" label="Enter Name" placeholder="Enter name" type="text" fill="outline"
       label-placement="floating"></ion-input>
-    <ion-button expand="block" [routerLink]="['/register-user-face']">Next</ion-button>
+    <ion-button expand="block" [routerLink]="['/register-user-face']" (click)="saveUserName()">Save</ion-button>
   </div>
 </ion-content>

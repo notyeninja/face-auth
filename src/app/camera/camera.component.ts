@@ -35,8 +35,10 @@ export class CameraComponent implements AfterViewInit, OnDestroy {
       .subscribe(state => {
         if (state) {
           this.videoElement.play();
+          this.cameraService.videoStreamBS.next(this.videoElement);
         } else {
           this.videoElement.pause();
+          this.cameraService.videoStreamBS.next(null);
         }
       })
   }
