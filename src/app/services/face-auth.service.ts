@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FaceMatcher, TinyFaceDetectorOptions, detectSingleFace, loadFaceLandmarkTinyModel, loadFaceRecognitionModel, loadTinyFaceDetectorModel, nets } from 'face-api.js';
-import { BehaviorSubject, Observable, ReplaySubject, interval, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subject, interval, takeUntil } from 'rxjs';
 import { Capacitor } from '@capacitor/core';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class FaceAuthService {
   private faceDetectionInterval$?: Observable<number> = undefined;
   private registerFaceDescriptor: Float32Array[] = [];
   private readonly REQUIRED_CONFIDENCE_LEVEL = 95;
-  private faceRegistrationBS = new BehaviorSubject<string>('');
-  private faceAuthenticationBS = new BehaviorSubject<string>('');
+  private faceRegistrationBS = new Subject<string>();
+  private faceAuthenticationBS = new Subject<string>();
   private faceAuthModelLoadedBS = new BehaviorSubject<boolean>(false);
   private faceDetectionConfidenceLevel = 0;
   private readonly DEFAULT_AUTH_TRIES = 3;
@@ -137,23 +137,10 @@ export class FaceAuthService {
     console.log(`State of face detection replay subject: ${this.stopFaceDetection$.closed}`);
   }
 
-  // private resetFaceDetectionLoopStop() {
-  //   if (this.stopFaceDetection$) {
-  //     console.log(`The loop stop stream is not null`);
-  //     console.log(`State is: ${this.stopFaceDetection$.closed}`);
-  //   } else {
-  //     console.log(`The loop stop stream is null`);
-  //   }
-
-  //   if (this.stopFaceDetection$.closed) {
-  //     this.stopFaceDetection$ = new ReplaySubject<boolean>(1);
-  //     console.log(`Reinitializing face loop stopage observable: ${this.stopFaceDetection$.closed}`);
-  //   }
-  // }
-
   private initFaceDetectionLoop() {
     console.log('initializing face detection loop interval');
     this.stopFaceDetection$ = new ReplaySubject<boolean>(1);
     this.faceDetectionInterval$ = interval(100).pipe(takeUntil(this.stopFaceDetection$));
   }
+
 }
