@@ -13,9 +13,13 @@
   <div>
     <div>
       <!-- This is where the camera will go -->
+      <app-camera></app-camera>
     </div>
     <div>
       <ion-button size="large" expand="block" (click)="authenticateUser()">Login</ion-button>
+    </div>
+    <div>
+      <span *ngFor="let message of messages">{{message}}</span>
     </div>
     <div>
       <!--This is for debugging purpose. Hide it later-->

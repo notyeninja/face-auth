@@ -47,6 +47,7 @@ export class CameraComponent implements AfterViewInit, OnDestroy, OnInit {
       this.cameraService.videoStreamBS.next(null);
     });
   }
+
   ngAfterViewInit() {
     console.log('Inside after view init of camera component');
     if (this.videoPlayer) {

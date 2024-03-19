@@ -3,6 +3,7 @@ import { CameraService } from '../services/camera.service';
 import { FaceAuthService } from '../services/face-auth.service';
 import { Router } from '@angular/router';
 import { ReplaySubject, filter, takeUntil } from 'rxjs';
+import { CameraState } from '../models/camera.models';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { ReplaySubject, filter, takeUntil } from 'rxjs';
 })
 export class LoginPage {
 
+  messages: Array<string> = [];
   private destroy$ = new ReplaySubject<boolean>(1);
   private startedCamera$ = this.cameraService.videoStreamBS
     .asObservable()
@@ -32,9 +34,13 @@ export class LoginPage {
         filter(status => status !== '')
       )
       .subscribe(status => {
+        this.messages.push(status);
+
         if (status.includes('Authorized')) {
+          this.stopCamera();
           this.redirectToSuccess();
         } else if (status.includes('Not Authorized')) {
+          this.stopCamera();
           this.redirectToUnauthorized();
         }
       });
@@ -61,5 +67,9 @@ export class LoginPage {
     setTimeout(() => {
       this.router.navigate(['/login-failed']);
     }, 1000);
+  }
+
+  private stopCamera() {
+    this.cameraService.stopCamera();
   }
 }
