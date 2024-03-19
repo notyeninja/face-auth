@@ -42,7 +42,7 @@ export class LoginPage {
           this.authInProgress = false;
           this.stopCamera();
           this.redirectToSuccess();
-        } else if (status.includes('Not Authorized')) {
+        } else if (status.includes('Unauthorized')) {
           this.authInProgress = false;
           this.stopCamera();
           this.redirectToUnauthorized();

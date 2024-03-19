@@ -78,17 +78,19 @@ export class FaceAuthService {
       if (detectedFace) {
         const bestMatch = faceMatcher.findBestMatch(detectedFace.descriptor);
         this.authTries -= 1;
-        const notAuthorized = (bestMatch.label === 'unknown' || bestMatch.distance > 0.6);
+        const authorizedUser = !(bestMatch.label === 'unknown' || bestMatch.distance > 0.6);
 
-        if (!notAuthorized) {
+        console.log(`Best match: Label: ${bestMatch.label},  Distance: ${bestMatch.distance}, Tries: ${this.authTries}`);
+
+        if (authorizedUser) {
           // if system detect is authorized face then mark it successfull
           this.faceAuthenticationBS.next('Authorized');
           this.stopFaceDetectionLoop();
         }
 
-        if (notAuthorized && this.authTries === 0) {
+        if (!authorizedUser && this.authTries === 0) {
           // System is not able to recognize the user and all tries are exhausted.
-          this.faceAuthenticationBS.next('Not Authorized');
+          this.faceAuthenticationBS.next('Unauthorized');
           this.stopFaceDetectionLoop();
         }
       }
