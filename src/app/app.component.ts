@@ -10,7 +10,11 @@ export class AppComponent implements AfterViewInit {
   constructor(private faceAuthService: FaceAuthService) { }
 
   async ngAfterViewInit() {
-    await this.faceAuthService.loadModels();
-    console.log('Face recognition models loaded.');
+    try {
+      await this.faceAuthService.loadModels();
+      this.faceAuthService.setModelLoaded(true);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }

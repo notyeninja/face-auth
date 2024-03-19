@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FaceDetection, FaceMatcher, TinyFaceDetectorOptions, detectSingleFace, loadFaceLandmarkTinyModel, loadFaceRecognitionModel, loadTinyFaceDetectorModel } from 'face-api.js';
+import { FaceMatcher, TinyFaceDetectorOptions, detectSingleFace, loadFaceLandmarkTinyModel, loadFaceRecognitionModel, loadTinyFaceDetectorModel, nets } from 'face-api.js';
 import { BehaviorSubject, Observable, ReplaySubject, interval, takeUntil } from 'rxjs';
+import { Capacitor } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,16 @@ export class FaceAuthService {
   private readonly REQUIRED_CONFIDENCE_LEVEL = 95;
   private faceRegistrationBS = new BehaviorSubject<string>('');
   private faceAuthenticationBS = new BehaviorSubject<string>('');
+  private faceAuthModelLoadedBS = new BehaviorSubject<boolean>(false);
   private faceDetectionConfidenceLevel = 0;
   private readonly DEFAULT_AUTH_TRIES = 3;
   private authTries = 0;
   private userName = '';
 
+
   faceRegistrationStatus$ = this.faceRegistrationBS.asObservable();
   faceAuthenticationStatus$ = this.faceAuthenticationBS.asObservable();
+  faceAuthModelLoadedStatus$ = this.faceAuthModelLoadedBS.asObservable();
 
   constructor() { }
 
@@ -29,6 +33,10 @@ export class FaceAuthService {
 
   getUserDetails(): string {
     return this.userName;
+  }
+
+  setModelLoaded(isLoaded: boolean) {
+    this.faceAuthModelLoadedBS.next(isLoaded);
   }
 
   registerFace(video: HTMLVideoElement | null) {
@@ -88,11 +96,16 @@ export class FaceAuthService {
   }
 
   async loadModels() {
-    return Promise.all([
-      loadTinyFaceDetectorModel('./assets/ml-models'),
-      loadFaceLandmarkTinyModel('./assets/ml-models'),
-      loadFaceRecognitionModel('./assets/ml-models')
-    ]).then(() => { });
+    const platform = Capacitor.getPlatform();
+    if (platform === 'web') {
+      await loadTinyFaceDetectorModel('./assets/ml-models'),
+        await loadFaceLandmarkTinyModel('./assets/ml-models'),
+        await loadFaceRecognitionModel('./assets/ml-models')
+    } else {
+      await loadTinyFaceDetectorModel('/assets/ml');
+      await loadFaceLandmarkTinyModel('/assets/ml');
+      await loadFaceRecognitionModel('/assets/ml');
+    }
   }
 
   private async detectFace(video: HTMLVideoElement) {

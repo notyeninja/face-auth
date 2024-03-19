@@ -11,4 +11,11 @@
     <ion-button expand="block" size="large" [routerLink]="['/register-user-details']">Register User</ion-button>
     <ion-button expand="block" size="large" [routerLink]="['/login']">Login User</ion-button>
   </div>
+
+  <div>
+    <ion-text color="tertiary">
+      <h3 *ngIf="modelLoaded">Model Loaded.</h3>
+      <h3 *ngIf="!modelLoaded">Model NOT Loaded</h3>
+    </ion-text>
+  </div>
 </ion-content>
