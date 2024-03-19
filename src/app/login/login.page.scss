@@ -1,3 +1,33 @@
 #debugBtn {
     margin-top: 4em;
 }
+
+.indicator {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 1px 1px #fff;
+    background-color: #f17c57fa;
+
+}
+
+.pulse {
+    animation: pulse-animation 1s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(255, 102, 0, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(224, 138, 80, 0);
+    }
+}

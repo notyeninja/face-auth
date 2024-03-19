@@ -13,6 +13,7 @@ import { CameraState } from '../models/camera.models';
 export class LoginPage {
 
   messages: Array<string> = [];
+  authInProgress: boolean = false;
   private destroy$ = new ReplaySubject<boolean>(1);
   private startedCamera$ = this.cameraService.videoStreamBS
     .asObservable()
@@ -35,11 +36,14 @@ export class LoginPage {
       )
       .subscribe(status => {
         this.messages.push(status);
+        this.authInProgress = true;
 
         if (status.includes('Authorized')) {
+          this.authInProgress = false;
           this.stopCamera();
           this.redirectToSuccess();
         } else if (status.includes('Not Authorized')) {
+          this.authInProgress = false;
           this.stopCamera();
           this.redirectToUnauthorized();
         }
@@ -60,13 +64,13 @@ export class LoginPage {
   private redirectToSuccess() {
     setTimeout(() => {
       this.router.navigate(['/login-success']);
-    }, 1000);
+    }, 500);
   }
 
   private redirectToUnauthorized() {
     setTimeout(() => {
       this.router.navigate(['/login-failed']);
-    }, 1000);
+    }, 500);
   }
 
   private stopCamera() {

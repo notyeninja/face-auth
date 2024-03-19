@@ -27,6 +27,10 @@ export class FaceAuthService {
     this.userName = userName;
   }
 
+  getUserDetails(): string {
+    return this.userName;
+  }
+
   registerFace(video: HTMLVideoElement | null) {
     this.faceRegistrationBS.next('Started face registration...');
     // start detecting face at an interval

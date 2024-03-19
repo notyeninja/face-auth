@@ -18,10 +18,11 @@
     <div>
       <ion-button size="large" expand="block" (click)="authenticateUser()">Login</ion-button>
     </div>
-    <div>
-      <span *ngFor="let message of messages">{{message}}</span>
+    <div class="indicator" *ngIf="authInProgress">
+      <div class="circle pulse orage"></div>
+      <h3>Authenticating...</h3>
     </div>
-    <div>
+    <div class="debug">
       <!--This is for debugging purpose. Hide it later-->
       <ion-button size="large" expand="block" id="debugBtn" [routerLink]="['/login-success']">Go to Success
         Page</ion-button>
